@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Theme and Volume Controls -->
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    
+    <div class="volume-toggle">
+        <button id="volume-toggle-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    
+    <div id="best-display">Best: <span id="best-time">-</span>ms</div>
+    
+    <!-- Main Game Container -->
+    <div id="game-container">
+        <div id="app-container">
+            <h1>Reaction Time</h1>
+            <p id="instructions">Test your reflexes. Click as soon as the screen turns green.</p>
+            <button id="start-button">Click When Ready</button>
+        </div>
+    </div>
+    
+    <!-- Results Modal -->
+    <div id="result-modal" class="hidden">
+        <h2>Your Result</h2>
+        <div id="time-result">
+            <span id="reaction-time">0</span>
+            <span class="ms">ms</span>
+        </div>
+        <div id="performance-rating">Very Slow</div>
+        
+        <div id="stats-container">
+            <h3>YOUR STATS</h3>
+            <div id="stats-grid">
+                <div class="stat-label">Rank</div>
+                <div class="stat-label">Average</div>
+                <div id="rank-value">-</div>
+                <div id="avg-value">-</div>
+            </div>
+        </div>
+        
+        <div id="action-buttons">
+            <button id="share-button">
+                <i class="fas fa-share-nodes"></i>
+                Share
+            </button>
+            <button id="try-again-button">
+                <i class="fas fa-rotate"></i>
+                Try Again
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

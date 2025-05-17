@@ -1,0 +1,379 @@
+/* ======================================================
+   THEME VARIABLES
+   ====================================================== */
+:root {
+    /* Light theme variables */
+    --primary-bg: #ffffff;
+    --primary-text: #333333;
+    --ready-bg: #4CD964;
+    --button-bg: #7e57ff;
+    --text-color: #333333;
+    --secondary-text: rgba(0, 0, 0, 0.7);
+    --button-hover: #9370ff;
+    --too-soon-bg: #FF3B30;
+}
+
+[data-theme="dark"] {
+    /* Dark theme variables */
+    --primary-bg: #331c65;
+    --primary-text: #ffffff;
+    --ready-bg: #388e3c;
+    --button-bg: #7e57ff;
+    --text-color: #ffffff;
+    --secondary-text: rgba(255, 255, 255, 0.7);
+    --button-hover: #9370ff;
+}
+
+/* ======================================================
+   GLOBAL STYLES
+   ====================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body.ready {
+    background-color: var(--ready-bg);
+}
+
+body.too-soon {
+    background-color: var(--too-soon-bg);
+}
+
+/* ======================================================
+   GAME CONTAINER STYLES
+   ====================================================== */
+#game-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+#app-container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    z-index: 10;
+}
+
+/* ======================================================
+   TYPOGRAPHY
+   ====================================================== */
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-text);
+}
+
+#instructions {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--secondary-text);
+    max-width: 500px;
+    text-align: center;
+}
+
+/* ======================================================
+   BUTTON STYLES
+   ====================================================== */
+#start-button {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin: 20px 0;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 220px;
+}
+
+#start-button:hover {
+    background-color: var(--button-hover);
+}
+
+#start-button:active {
+    transform: scale(0.98);
+}
+
+/* ======================================================
+   CONTROLS & TOGGLES
+   ====================================================== */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.volume-toggle {
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    z-index: 100;
+}
+
+#theme-toggle-btn, #volume-toggle-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+#theme-toggle-btn:hover, #volume-toggle-btn:hover {
+    opacity: 1;
+}
+
+#theme-toggle-btn i, #volume-toggle-btn i {
+    position: absolute;
+    transition: opacity 0.3s;
+}
+
+.fa-sun {
+    opacity: 0;
+}
+
+.fa-moon {
+    opacity: 1;
+}
+
+[data-theme="dark"] .fa-sun {
+    opacity: 1;
+}
+
+[data-theme="dark"] .fa-moon {
+    opacity: 0;
+}
+
+/* ======================================================
+   STATS DISPLAY
+   ====================================================== */
+#stats-display {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    font-size: 1rem;
+    color: var(--secondary-text);
+}
+
+#stats-display .stat-item {
+    margin-left: 20px;
+}
+
+#reaction-time, #best-time {
+    font-weight: bold;
+}
+
+#best-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1rem;
+    color: var(--secondary-text);
+    font-weight: bold;
+}
+
+/* ======================================================
+   RESULT MODAL STYLES
+   ====================================================== */
+#result-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1E2A3B;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#result-modal.hidden {
+    display: none;
+}
+
+#result-modal h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#time-result {
+    font-size: 7rem;
+    font-weight: bold;
+    color: #7e57ff;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.ms {
+    font-size: 3rem;
+}
+
+#performance-rating {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#stats-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+#stats-container h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+}
+
+#stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#rank-value, #avg-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* ======================================================
+   ACTION BUTTONS
+   ====================================================== */
+#action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+#share-button, #try-again-button {
+    flex: 1;
+    padding: 15px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#share-button {
+    background-color: #000;
+    color: white;
+}
+
+#try-again-button {
+    background-color: #7e57ff;
+    color: white;
+}
+
+#share-button:hover, #try-again-button:hover {
+    opacity: 0.9;
+}
+
+/* ======================================================
+   HINT METER STYLES
+   ====================================================== */
+#hint-meter {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    display: none;
+    z-index: 100;
+}
+
+.hint-progress {
+    height: 100%;
+    width: 0%;
+    background-color: #7e57ff;
+    border-radius: 4px;
+    transition: width 0.1s linear;
+}
+
+/* ======================================================
+   MEDIA QUERIES
+   ====================================================== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    #instructions {
+        font-size: 1rem;
+    }
+    
+    #time-result {
+        font-size: 5rem;
+    }
+    
+    .ms {
+        font-size: 2.5rem;
+    }
+    
+    #performance-rating {
+        font-size: 1.5rem;
+    }
+    
+    #theme-toggle-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    #stats-display {
+        top: 80px;
+        right: 20px;
+    }
+} 
